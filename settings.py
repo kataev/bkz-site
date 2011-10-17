@@ -135,7 +135,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.humanize',
-    'price',
+    'priceList',
     'django.contrib.flatpages',
 
 #    'tinymce'

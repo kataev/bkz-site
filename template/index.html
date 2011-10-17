@@ -11,7 +11,7 @@
         {% include "menu.html" %}
         <img src="/static/images/logo.png" title="Березниковский кирпичный завод" alt="Березниковский кирпичный завод">
     </header>
-    <div id="sidebar">{{ price }}</div>
+    <div id="sidebar"><a href="{{ price.file.url }}">{{ price }}</a></div>
     <div id='main' role="main">
         {% block content %}
             Березниковский кирпичный завод это динамическая компания

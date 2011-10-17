@@ -1,10 +1,9 @@
-from dojango.util import dojo_collector
 from django.shortcuts import render
-from django.template import RequestContext
+from priceList.models import PriceList
+
 
 def proc(request):
-    return dict(price=u'price text')
-
+    return dict(price=PriceList.objects.latest('date'))
 
 def main(request):
     return render(request,'index.html')
