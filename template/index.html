@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Березниковский кирпичный завод</title>
+    <link href="/static/style.css" rel="stylesheet">
+
+</head>
+<body>
+<div id="container">
+    <header>
+        {% include "menu.html" %}
+        <img src="/static/images/logo.png" title="Березниковский кирпичный завод" alt="Березниковский кирпичный завод">
+    </header>
+    <div id="sidebar">{{ price }}</div>
+    <div id='main' role="main">
+        {% block content %}
+            Березниковский кирпичный завод это динамическая компания
+            производящяя пустотелый керамический кирпич
+            The quick brown fox jumps over the lazy dog. Foxy parsons quiz and cajole the lovably dim wiki-girl. Watch “Jeopardy!”, Alex Trebek’s fun TV quiz game. How razorback-jumping frogs can level six piqued gymnasts! All questions asked by five watched experts — amaze the judge.
+
+        {% endblock %}
+    </div>
+    <footer>
+    ООО Березниковский кирпичный завод
+    </footer>
+</div>
+</body>
+</html>

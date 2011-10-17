@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+import os
+
+PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = True
@@ -12,30 +15,22 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'bkz',                      # Or path to database file if using sqlite3.
-        'USER': 'django',                      # Not used with sqlite3.
-        'PASSWORD': 'django',                  # Not used with sqlite3.
+        'USER': '',                      # Not used with sqlite3.
+        'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
 
+TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
+"django.core.context_processors.debug",
+"django.core.context_processors.i18n",
+"django.core.context_processors.media",
+"django.core.context_processors.static",
+"django.contrib.messages.context_processors.messages",'views.proc',)
 
-DEBUG_TOOLBAR_CONFIG = {
-    'INTERCEPT_REDIRECTS' : False,
-}
-
-
-DOJANGO_DOJO_PROFILE = "google_uncompressed"
-
-DOJANGO_DOJO_VERSION = '1.6.0'
-
-DOJANGO_DOJO_DEBUG = True
-
-DOJANGO_CDN_USE_SSL = True
-
-DOJANGO_DOJO_SECURE_JSON = False
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -76,7 +71,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = '/var/www/static/'
+STATIC_ROOT = ''
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -89,7 +84,7 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    '/home/bteam/bkz/static/',
+    os.path.join(PROJECT_PATH,'static/'),
 #    # Put strings here, like "/home/html/static" or "C:/www/django/static".
 #    # Always use forward slashes, even on Windows.
 #    # Don't forget to use absolute paths, not relative paths.
@@ -114,19 +109,20 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-#    'django.middleware.common.CommonMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
 #    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'dojango.middleware.DojoCollector',
 #    'debug_toolbar.middleware.DebugToolbarMiddleware'
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+
 )
 
 ROOT_URLCONF = 'bkz.urls'
 
 TEMPLATE_DIRS = (
-    '/home/bteam/bkz/templates/'
+    os.path.join(PROJECT_PATH,'template/'),
 )
 
 INSTALLED_APPS = (
@@ -139,9 +135,10 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.humanize',
-    'dojango',
+    'price',
+    'django.contrib.flatpages',
 
-#    'debug_toolbar'
+#    'tinymce'
 )
 
 # A sample logging configuration. The only tangible logging
