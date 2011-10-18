@@ -5,3 +5,10 @@ header ul a { color:#a52a2a;}
 footer {text-align: center;font-style: italic;}
 
 #main {width: 780px; margin-left: auto;margin-right: auto;}
+
+table dt {float: left; margin-right: 4px;}
+
+ol.price {list-style: none;}
+.price li:before {content: 'М'}
+.price li {border-bottom: 1px dotted #8a2be2; margin-bottom: 10px;}
+.price li span {float:right;right: 20px;}

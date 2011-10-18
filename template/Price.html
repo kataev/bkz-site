@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+{% block title %}{{ priceList }}{% endblock %}
+{% block content %}
+    <table>
+        <thead>
+        <tr>
+            <th>№ п\п</th>
+            <th colspan="2">Вид кирпича</th>
+            <th>Основные характеристики</th>
+            <th>Марки по прочности</th>
+            <th>Цена <span class='nds'>за физ. шт., без НДС, руб</span></th>
+        </tr>
+        </thead>
+        {% for b in priceList.brick_set.all %}
+            <tr>
+                <td>{{ b.order }}</td>
+                <td>{{ b.color }}</td>
+                <td><p>{{ b.name }}</p>
+                    <i>{{ b.width.size }}</i>
+                    <b>{{ b.GOST }}</b>
+                </td>
+                <td>
+                    <dl class="chars">
+                        {% for c in b.chars %}
+                            <dt>{{ c.label }}</dt><dd>{{ c.value }} {{ c.un }}</dd>
+                        {% endfor %}
+                    </dl>
+                </td>
+                <td colspan="2"><ol class='price'>
+                    {% for m in b.mark_price.all %}
+                        <li>{{ m.mark }}<span>{{ m.price }}</span></li>
+                    {% endfor %}
+                </ol>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

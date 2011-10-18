@@ -4,7 +4,8 @@ from django.contrib import admin
 from models import *
 
 class MarkPriceAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('__unicode__','mark','price',)
+    list_filter = ('mark','brick__view','brick__color','brick__width__name','brick__price__date')
 
 class PriceListAdmin(admin.ModelAdmin):
     pass

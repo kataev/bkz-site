@@ -7,8 +7,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^admin/',include(admin.site.urls)),
-    url(r'^tinymce/',include('tinymce.urls')),
-
+    url(r'^price/(\d{4}-\d{2}-\d{2})/$','views.price'),
     url(r'^$', 'bkz.views.main'),
 #    url(r'^about/$', 'bkz.views.about'),
 )

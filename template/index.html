@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Березниковский кирпичный завод</title>
+    <title>{% block title %}Главная{% endblock %} - Березниковский кирпичный завод</title>
     <link href="/static/style.css" rel="stylesheet">
 
 </head>
@@ -11,7 +11,7 @@
         {% include "menu.html" %}
         <img src="/static/images/logo.png" title="Березниковский кирпичный завод" alt="Березниковский кирпичный завод">
     </header>
-    <div id="sidebar"><a href="{{ price.file.url }}">{{ price }}</a></div>
+    <div id="sidebar"><a href="{{ price.get_absolute_url }}">{{ price }}</a></div>
     <div id='main' role="main">
         {% block content %}
             Березниковский кирпичный завод это динамическая компания
