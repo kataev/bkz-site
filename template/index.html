@@ -6,23 +6,42 @@
 
 </head>
 <body>
-<div id="container">
-    <header>
-        {% include "menu.html" %}
-        <img src="/static/images/logo.png" title="Березниковский кирпичный завод" alt="Березниковский кирпичный завод">
-    </header>
-    <div id="sidebar"><a href="{{ price.get_absolute_url }}">{{ price }}</a></div>
-    <div id='main' role="main">
-        {% block content %}
-            Березниковский кирпичный завод это динамическая компания
-            производящяя пустотелый керамический кирпич
-            The quick brown fox jumps over the lazy dog. Foxy parsons quiz and cajole the lovably dim wiki-girl. Watch “Jeopardy!”, Alex Trebek’s fun TV quiz game. How razorback-jumping frogs can level six piqued gymnasts! All questions asked by five watched experts — amaze the judge.
+<ul id='navbar'>
+        {% include 'menu.html' %}
+    </ul>
+<h1 id='masthead'>
 
-        {% endblock %}
-    </div>
-    <footer>
-    ООО Березниковский кирпичный завод
-    </footer>
+    <a href="/">
+        <img src="/static/images/logo.png" alt='Березниковский кирпичный завод: Пустотелый кирпич'>
+    </a>
+</h1>
+<div id='ish'>
 </div>
+<div id='main'>
+    <div id='content' class='column'>
+        <div>asdlksdlkasjdf;laksjdf;laksjdf;alksjdf;lkj</div>
+    </div>
+    <div id='secondary' class='column'>
+    <ul id='banners'>
+        <li>
+            <a href="{{ price.get_absolute_url }}">
+                <h4>Прайс лист</h4>
+                <p>от {{ price.date }}</p>
+
+            </a>
+        </li>
+        <div id='choice'>
+        <h3>Последние новости</h3>
+            {% for n in news %}
+            <p class="info">{{ n.d }}</p>
+            <h4 class='title'><a href="{{ n.get_absolute_url }}">{{ n.title }}</a></h4>
+            <p>{{ n.content|truncatewords:10 }}</p>
+            {% endfor %}
+        </div>
+    </ul>
+    </div>
+{#    <div id='sidebar' class='column'></div>#}
+</div>
+    
 </body>
 </html>

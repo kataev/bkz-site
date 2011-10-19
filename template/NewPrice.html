@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+{% block title %}{{ priceList }}{% endblock %}
+{% block content %}
+    <table>
+        <thead>
+        <tr>
+            <th>Березниковский кирписный завод</th>
+            <th colspan="2">Утолщенный</th>
+            <th colspan="2">Одинарный</th>
+            <th>Евро</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for view in Views %}
+            <tr>
+                <th>{{ view }}</th>
+                {% for weight in Weights %}
+                    {% for color in Colors %}
+                        <td>
+                            <table>
+                                <caption>{{ color }}</caption>
+                                <tr>
+                                    {% for mark in marks %}
+                                    <th>{{ mark }}</th><td>{{ mark.price }}</td>
+                                    {% endfor %}
+                                </tr>
+                            </table>
+                        </td>
+                    {% endfor %}
+                {% endfor %}
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

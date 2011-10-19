@@ -70,6 +70,7 @@ class PriceList(models.Model):
 
 
 class Brick(models.Model):
+    col=1
     GOST = u'ГОСТ 530-2007'
     order = models.PositiveSmallIntegerField(u'Порядок')
     view = models.CharField(u'Вид',choices=view_c,max_length=60)

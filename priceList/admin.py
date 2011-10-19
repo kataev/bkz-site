@@ -2,13 +2,20 @@
 __author__ = 'bteam'
 from django.contrib import admin
 from models import *
+from django import forms
+
+class Form(forms.ModelForm):
+    class Meta:
+#        model=MarkPrice
+        exclude = ['price']
+
 
 class MarkPriceAdmin(admin.ModelAdmin):
     list_display = ('__unicode__','mark','price',)
     list_filter = ('mark','brick__view','brick__color','brick__width__name','brick__price__date')
 
 class PriceListAdmin(admin.ModelAdmin):
-    pass
+    form = Form
 
 class ColorAdmin(admin.ModelAdmin):
     pass

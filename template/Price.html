@@ -11,28 +11,31 @@
             <th>Цена <span class='nds'>за физ. шт., без НДС, руб</span></th>
         </tr>
         </thead>
-        {% for b in priceList.brick_set.all %}
+    <tbody>
+        {% for b in priceList.brick %}
             <tr>
                 <td>{{ b.order }}</td>
-                <td>{{ b.color }}</td>
-                <td><p>{{ b.name }}</p>
-                    <i>{{ b.width.size }}</i>
+            {% ifchanged b.color %}<td rowspan="{{ b.col }}">{{ b.color }}</td>
+                <td rowspan="{{ b.col }}"><p>Кирпич керамический <span class='view'>{{ b.view|lower }}</span>
+                    пустотелый <span class='width'>{{ b.width|lower }}</span></p>
+                    <div>{{ b.width.size }}</div>
                     <b>{{ b.GOST }}</b>
                 </td>
-                <td>
-                    <dl class="chars">
-                        {% for c in b.chars %}
-                            <dt>{{ c.label }}</dt><dd>{{ c.value }} {{ c.un }}</dd>
+                <td rowspan="{{ b.col }}" class="chars">
+                    <ul>{% for c in b.chars %}
+                            <li>{{ c.label }}<span>{{ c.value }} {{ c.un }}</span></li>
                         {% endfor %}
-                    </dl>
+                    </ul>
                 </td>
-                <td colspan="2"><ol class='price'>
-                    {% for m in b.mark_price.all %}
+            {% endifchanged %}
+                <td colspan="2">
+                    <ul class='price'>{% for m in b.mark_price.all %}
                         <li>{{ m.mark }}<span>{{ m.price }}</span></li>
                     {% endfor %}
-                </ol>
+                </ul>
                 </td>
             </tr>
         {% endfor %}
+    </tbody>
     </table>
 {% endblock %}
