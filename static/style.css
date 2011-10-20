@@ -1,5 +1,6 @@
 #masthead {position: absolute; top: 0px; left:22px; z-index: 5;}
 #masthead a {display: block; width: 177px; height: 186px;}
+#masthead img {border-bottom:5px solid #990d0d;border-left: 5px solid #990d0d;border-right: 5px solid #990d0d;}
 /*h1#masthead:hover {border: 1px black solid;}*/
 
 * { margin: 0px; padding: 0px;}
@@ -8,17 +9,18 @@ ul,ol {list-style: none;}
 .column {float:left;}
 body {
     font:  0.8125em Verdana, sans serif;
-    line-height: 1px;
+    /*line-height: 1px;*/
     color: #333;
 }
+
 
 
 #navbar {
     height:2.4em;
     padding: 0 0 0 215px;
     background: #fbfaf4;
-    border-top: 5px solid #333;
-    font:  18px Georgia,Times, serif;
+    border-top: 5px solid #990d0d;
+    font:  18px Verdana, serif;
     overflow: hidden;
     min-width:750px;
 }
@@ -34,6 +36,12 @@ body {
     text-transform: uppercase;
     color: black;
 }
+
+#navbar a:hover, .contacts #navbar #contacts a, .place #navbar #place a
+{
+    
+}
+
 
 #ish {
     position:relative;
@@ -53,34 +61,72 @@ body {
 letter-spacing: 1px;}
 
 #content {
-    width:355px;
+    width:485px; /*Ширина текста*/
     padding-left: 0px;
     padding-right: 15px;
     padding: 0 25px 0 20px;
 }
 
+#content .ishinfo {
+    text-align: center;
+    border-bottom: 1px dashed #b2b2b2;
+    padding-bottom: 1em;
+    margin-bottom: 1.5em;
+}
+
+#content .title {
+    margin-bottom: 0;
+    padding-bottom: 0.25em;
+    border-bottom: none;
+    text-align: center;
+    font: 1.8em Georgia, Times, serif;
+}
+
+#content h1 {
+    font: 1.66em Georgia, Times, serif;
+    text-align: center;
+    margin: 0.5em 0;
+    padding-bottom: 0.75em;
+    border-bottom: 1px dashed #b2b2b2;
+}
+
+#content .byline {
+    padding: 0 0 1em;
+    margin: 0 0 1.25em;
+    text-align: center;
+}
+
+.title {
+    text-transform: none;
+    letter-spacing: 1px;
+}
+.view {font-style: italic;}
+
 #secondary {width: 215px;}
 #secondary .title {margin-bottom: 0.25em;}
+#secondary a {color:#990d0d;text-decoration: none;}
 #sidebar { width: 140px; padding-left: 15px;}
 #banners {margin: 0 20px 20px;}
-#banners li {margin: 0 0 10px;}
+#banners li {margin: 0 0 10px; border: 1px dashed;}
 #banners li a {
     color: black;
-    background-image: url('/static/images/price.png');
     padding: 5px;
     text-align: center;
     text-decoration: none;
-    background:  #CCC;
+    /*background:  #CCC;*/
     display: block;
-    width: 173px;
+    /*width: 173px;*/
+    /*height: 128px;*/
     margin: 0 auto;
 }
+#banners li a:hover {background: none;}
+#banners li a p {margin: auto;text-align: center;}
 
 #banners li a span {border-top: 1px gray solid;}
 
 #choice {
     border-top: 1px solid #D9D9D9;
-    padding: 1.5em 20px;
+    padding: 1.5em 10px;
 }
 
 #choice h3 {
@@ -93,10 +139,12 @@ letter-spacing: 1px;}
     font-style: italic;
     font-size: 0.9em;
     color: #666;
+    margin: 0;
 }
 #choice .title {
     text-align: left;
     font:  1.6em Georgia, Times, serif;
+    margin-bottom: 0;
 }
 
 #choice .byline {
@@ -123,6 +171,26 @@ letter-spacing: 1px;}
     padding-left: 15px;
 }
 
+#footer {
+    clear: both;
+    border: 1px solid #666;
+    border-width: 1px 0;
+    margin-bottom: 3em;
+    font-size: 0.85em;
+    /*background*/
+}
+
+#footer p {
+    /*margin-left: 300px;*/
+    padding: 1em 20px;
+    border-left: 1px solid #666;
+    background: white;
+}
+
+#main a:hover
+{color:black !important; background-color: #f8dcdc; text-decoration: underline !important;}
+
+
 table {text-align: center;border-collapse: collapse;}
 table td,table th {margin: 4px; border: 1px black solid;}
 table ul {margin: 0px; list-style: none; padding-left: 0px;}
@@ -133,3 +201,5 @@ ul.price {list-style: none; text-align: left;}
 .price li:before {content: 'М '}
 .price li {border-bottom: 1px dotted black; margin: 0px 50px 5px 25px;}
 .price li span {float:right;right: 20px;}
+
+table, table p {letter-spacing: normal !important;}

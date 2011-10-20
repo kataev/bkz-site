@@ -1,6 +1,6 @@
 {% extends 'index.html' %}
-{% block title %}{{ priceList }}{% endblock %}
-{% block content %}
+{% block main %}
+    <h1>{{ flatpage.content.date }}</h1>
     <table>
         <thead>
         <tr>
@@ -12,11 +12,11 @@
         </tr>
         </thead>
     <tbody>
-        {% for b in priceList.brick %}
+        {% for b in flatpage.content.brick %}
             <tr>
                 <td>{{ b.order }}</td>
             {% ifchanged b.color %}<td rowspan="{{ b.col }}">{{ b.color }}</td>
-                <td rowspan="{{ b.col }}"><p>Кирпич керамический <span class='view'>{{ b.view|lower }}</span>
+                <td rowspan="{{ b.col }}"><p>Кирпич керамический <span class='view'>{{ b.get_view_display|lower }}</span>
                     пустотелый <span class='width'>{{ b.width|lower }}</span></p>
                     <div>{{ b.width.size }}</div>
                     <b>{{ b.GOST }}</b>

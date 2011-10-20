@@ -29,7 +29,8 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
 "django.core.context_processors.i18n",
 "django.core.context_processors.media",
 "django.core.context_processors.static",
-"django.contrib.messages.context_processors.messages",'views.proc',)
+"django.contrib.messages.context_processors.messages",
+'news.context.news',"priceList.context.price")
 
 
 # Local time zone for this installation. Choices can be found here:
@@ -135,12 +136,29 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.humanize',
+    'django.contrib.flatpages',
     'priceList',
     'news',
-    'django.contrib.flatpages',
-
-#    'tinymce'
+#    'mail',
+    'prod',
+    'pytils',
+    'tinymce',
+#    'dojango'
 )
+
+TINYMCE_DEFAULT_CONFIG={
+    'theme': 'advanced',
+    'mode': 'textareas',
+    'height': '450px',
+    'plugins' : 'emotions,spellchecker,advhr,insertdatetime,preview',
+    'theme_advanced_buttons1': 'newdocument,|,bold,italic,underline,|,justifyleft,justifycenter,justifyright,fontselect,fontsizeselect,formatselect',
+    'theme_advanced_buttons2': 'cut,copy,paste,|,bullist,numlist,|,outdent,indent,|,undo,redo,|,link,unlink,anchor,image,|,code,preview,|,forecolor,backcolor',
+    'theme_advanced_buttons3': 'insertdate,inserttime,|,spellchecker,advhr,,removeformat,|,sub,sup,|,charmap,emotions',
+    'theme_advanced_toolbar_location': 'top',
+    'theme_advanced_toolbar_align': 'left',
+    'theme_advanced_statusbar_location': 'bottom',
+    'theme_advanced_resizing': 'true'
+}
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

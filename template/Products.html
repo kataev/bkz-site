@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    {% for p in flatpage.content %}
+    <div class='item'>
+    <h4 class="title">Кирпич керамический <span class='view'>{{ p.brick.get_view_display|lower }}</span>
+                    пустотелый <span class='width'>{{ p.brick.width|lower }}</span></h4>
+    <h5 class='byline color'>{% for c in p.color.all %}
+        <span>{{ c }}</span>
+        {% endfor %}
+        </h5>
+    <p>
+        {{ p.about }}
+    </p>
+    </div>
+
+    {% endfor %}
+
+{% endblock %}

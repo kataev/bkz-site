@@ -28,7 +28,7 @@ class Color(models.Model):
         verbose_name = u'Цвет кирпича'
         verbose_name_plural = u'Цвет кирпичей'
 
-view_c = ((u'Лицевой',u'Лицевой'),(u'Рядовой',u'Рядовой')) #Строительный (Рядовой)
+view_c = ((u'facial',u'Лицевой'),(u'common',u'Рядовой')) #Строительный (Рядовой)
 
 class Width(models.Model):
     name = models.CharField(u'Название',max_length=60)
