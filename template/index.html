@@ -55,7 +55,7 @@
                 {% for n in news %}
                     <h4 class='title'><a href="{{ n.get_absolute_url }}">{{ n.title }}</a></h4>
                     <p class="info">{{ n.date|ru_strftime_inflected:'%d %B %Y' }}</p>
-                    {{ n.content|safe|truncatewords_html:10 }}
+                    {{ n.content|safe|truncatewords_html:8 }}
                 {% endfor %}
             </div>
         </div>
