@@ -63,7 +63,7 @@ class PriceList(models.Model):
         ordering = ('-date',)
 
     def get_absolute_url(self):
-        return '/price/%s/' % self.date.isoformat()
+        return '/price/'
 
     def __unicode__(self):
         return u'Прайс лист от %s года' % pytils.dt.ru_strftime(u'%d %B %Y',inflected=True,date=self.date)
@@ -87,6 +87,8 @@ class Brick(models.Model):
         chars.insert(2,dict(label=u'Вес',value=self.width.weight,un=color.PI.get('weight','')))
         return chars
 
+    def get_absolute_url(self):
+        return '/products/#%d' % self.pk
 
     class Meta:
         verbose_name = u'Кирпич из прайса'
@@ -94,7 +96,7 @@ class Brick(models.Model):
         ordering = ('order','view')
 
     def name(self):
-        return u'Кирпич керамический %s пустотелый %s' % (self.view.lower(),self.width.name.lower())
+        return u'Кирпич керамический %s пустотелый %s' % (self.get_view_display().lower(),self.width.name.lower())
 
     def __unicode__(self):
         return u'Позиция № %d, %s' % (self.order,self.name())

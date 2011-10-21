@@ -3,4 +3,4 @@ __author__ = 'bteam'
 from models import *
 
 def news(request):
-    return dict(news=News.objects.filter(show=True)[:5])
+    return dict(news=News.objects.filter(show=True)[:3])

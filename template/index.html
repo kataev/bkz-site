@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>{% block title %}{{ flatpage.title }}{% endblock %} - Березниковский кирпичный завод</title>
+    <link href="/static/images/icon.png" rel="shortcut icon">
     <link href="/static/style.css" rel="stylesheet">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js"></script>
     <script type="text/javascript" src="/static/js/script.js"></script>
@@ -14,26 +15,29 @@
 {#    {% load webdesign %}#}
 </ul>
 <h1 id='masthead'>
-    <a href="/">
-        <img width="175px" height="224px" src="/static/images/logo.png" alt='Березниковский кирпичный завод: Пустотелый кирпич'>
+    <a href="/" title='Главная' >
+        <img src="/static/images/bkz_logo.png" alt='Березниковский кирпичный завод: Пустотелый кирпич'>
     </a>
 </h1>
 
 <div id='ish'>
+    <a href="/news/1/" title='Березниковскому кирпичному заводу 20 лет!'>
+    </a>
 </div>
 <div id='main'>
     {% block main %}
         <div id='content' class='column'>
             <div>
-            <h1>{{ flatpage.title }}</h1>
+{#            <h1>{{ flatpage.title }}</h1>#}
                 {% block content %}
                 {% if flatpage.date %}
+                    <h1>{{ flatpage.title }}</h1>
                     <div class='ishinfo'>
                         {{ flatpage.date|ru_strftime_inflected:'%d %B %Y' }}
                     </div>
                 {% endif %}
 
-                <div id='articletext'>{{ flatpage.content }}</div>
+                <div id='articletext'>{{ flatpage.content|safe }}</div>
 
             {% endblock %}</div>
         </div>
@@ -51,7 +55,7 @@
                 {% for n in news %}
                     <h4 class='title'><a href="{{ n.get_absolute_url }}">{{ n.title }}</a></h4>
                     <p class="info">{{ n.date|ru_strftime_inflected:'%d %B %Y' }}</p>
-                    <p>{{ n.content|truncatewords_html:10 }}</p>
+                    {{ n.content|safe|truncatewords_html:10 }}
                 {% endfor %}
             </div>
         </div>
@@ -59,6 +63,7 @@
     {% endblock main %}
 </div>
 <div id='footer'>
+
     <p>
     <span class='copyright'>&copy
         ООО &#8220Березниковский кирпичный завод&#8221, <span class='years'>2011 &#8212 {% now "Y" %}</span>

@@ -1,16 +1,19 @@
 {% extends 'index.html' %}
+{% load pytils_translit %}
 
 {% block content %}
     {% for p in flatpage.content %}
-    <div class='item'>
+    <div class='item' id='{{ p.pk }}'>
     <h4 class="title">Кирпич керамический <span class='view'>{{ p.brick.get_view_display|lower }}</span>
                     пустотелый <span class='width'>{{ p.brick.width|lower }}</span></h4>
     <h5 class='byline color'>{% for c in p.color.all %}
-        <span>{{ c }}</span>
+        <span class='{{ c.name|translify }}' title="Цветовая гамма">{{ c }}</span>
         {% endfor %}
         </h5>
     <p>
-        {{ p.about }}
+        <img src="{{ p.image|default:'/static/images/news_placeholder.gif' }}" alt="Картинка"
+             style='float:{% cycle 'left' 'right' %};'>
+        {{ p.about|safe }}
     </p>
     </div>
 

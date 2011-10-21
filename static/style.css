@@ -1,6 +1,6 @@
 #masthead {position: absolute; top: 0px; left:22px; z-index: 5;}
-#masthead a {display: block; width: 177px; height: 186px;}
-#masthead img {border-bottom:5px solid #990d0d;border-left: 5px solid #990d0d;border-right: 5px solid #990d0d;}
+#masthead a {display: block; width: 156px; height: 121px;}
+#masthead img { margin-top: 60px;}
 /*h1#masthead:hover {border: 1px black solid;}*/
 
 * { margin: 0px; padding: 0px;}
@@ -11,8 +11,21 @@ body {
     font:  0.8125em Verdana, sans serif;
     /*line-height: 1px;*/
     color: #333;
+    background: url('/static/images/background.png') right bottom fixed no-repeat;
 }
 
+#ish a {
+    position: absolute;
+    top: 115px;
+    left:22px;
+    width: 157px;
+    height: 56px;
+    background: url("/static/images/g3061.png") top left no-repeat;
+}
+
+#ish a:hover {
+    background: url("/static/images/g3135.png") top left no-repeat;
+}
 
 
 #navbar {
@@ -34,14 +47,8 @@ body {
     display: block;
     padding:  0.75em 0 0.25em;
     text-transform: uppercase;
-    color: black;
+    color: #990d0d;
 }
-
-#navbar a:hover, .contacts #navbar #contacts a, .place #navbar #place a
-{
-    
-}
-
 
 #ish {
     position:relative;
@@ -54,9 +61,30 @@ body {
     width:750px;
     float:left;
     font-size: 0.88em;
-    padding: 1.5em 0 1.5em 210px;
-
+    padding: 1.5em 0 1.5em 180px;
 }
+
+#main a {
+    color: #808284;
+}
+
+#main h2, #main h1{
+    color: #6b1200;
+}
+
+.Zheltyij { color:#bfa730 !important;}
+.Krasnyij { color:#6b1200 !important;}
+
+#main p {
+    text-align: left;
+    line-height: 1.8em;
+    margin: 0 0 1em;
+    /*background-color: white;*/
+}
+
+#main a:hover
+{color:black !important; background-color: #f8dcdc; text-decoration: underline !important;}
+
 .title {text-transform: none;
 letter-spacing: 1px;}
 
@@ -96,6 +124,8 @@ letter-spacing: 1px;}
     text-align: center;
 }
 
+#content img { margin: 2px; border: 1px #990d0d solid; padding: 2px;}
+
 .title {
     text-transform: none;
     letter-spacing: 1px;
@@ -104,7 +134,7 @@ letter-spacing: 1px;}
 
 #secondary {width: 215px;}
 #secondary .title {margin-bottom: 0.25em;}
-#secondary a {color:#990d0d;text-decoration: none;}
+#secondary a {color:#990d0d;text-decoration: none;background-color: #F0F2F4;}
 #sidebar { width: 140px; padding-left: 15px;}
 #banners {margin: 0 20px 20px;}
 #banners li {margin: 0 0 10px; border: 1px dashed;}
@@ -160,11 +190,6 @@ letter-spacing: 1px;}
     margin: 0 0 1.5em;
 }
 
-#main p {
-    text-align: left;
-    line-height: 1.8em;
-    margin: 0 0 1em;
-}
 
 #sidebar {
     width: 140px;
@@ -175,7 +200,7 @@ letter-spacing: 1px;}
     clear: both;
     border: 1px solid #666;
     border-width: 1px 0;
-    margin-bottom: 3em;
+    margin-bottom: 0;
     font-size: 0.85em;
     /*background*/
 }
@@ -184,22 +209,5 @@ letter-spacing: 1px;}
     /*margin-left: 300px;*/
     padding: 1em 20px;
     border-left: 1px solid #666;
-    background: white;
+    /*background: white;*/
 }
-
-#main a:hover
-{color:black !important; background-color: #f8dcdc; text-decoration: underline !important;}
-
-
-table {text-align: center;border-collapse: collapse;}
-table td,table th {margin: 4px; border: 1px black solid;}
-table ul {margin: 0px; list-style: none; padding-left: 0px;}
-table .chars {font-size: 75%;text-align: left;}
-table .chars li { border-bottom: 1px dotted #008b8b;}
-table .chars span {float:right;}
-ul.price {list-style: none; text-align: left;}
-.price li:before {content: 'М '}
-.price li {border-bottom: 1px dotted black; margin: 0px 50px 5px 25px;}
-.price li span {float:right;right: 20px;}
-
-table, table p {letter-spacing: normal !important;}

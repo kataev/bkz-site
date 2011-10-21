@@ -1,41 +1,75 @@
 {% extends 'index.html' %}
-{% block main %}
-    <h1>{{ flatpage.content.date }}</h1>
+{% load pytils_translit %}
+{% block media %}
+    <style type="text/css">
+
+
+table {border-collapse: collapse;}
+div>table {text-align: center;border: black 2px solid;}
+div>table>tbody>tr {border: black 2px solid;}
+table td,table th {margin: 4px; border: 1px black solid;}
+table ul {margin: 0px; list-style: none; padding-left: 0px;}
+table .chars {font-size: 75%;text-align: left;}
+table .chars li { border-bottom: 1px dotted #008b8b;}
+table .chars span {float:right;}
+ul.price {list-style: none; text-align: left;}
+.price li:before {content: 'М '}
+.price li {border-bottom: 1px dotted black; margin: 0px 50px 5px 25px;}
+.price li span {float:right;right: 20px;}
+
+td h1 a {text-decoration: none;}
+table, table p {letter-spacing: normal !important;}
+    table table {width: 100%;height: 120px; border: none;}
+    /*table table td {border: none; border-bottom: 1px black solid;}*/
+    /*table table th {border: none; border-right: 1px black solid;border-bottom: 1px black solid;}*/
+    /*table table th:last-child {border: none; border-right: 1px black solid;}*/
+    td.chars td {width:60px;}
+    .marks {width: 70px;}
+    .price {width: 80px;}
+    tbody th.order {font-size: 2em;}
+    td p {position: relative;float: right;}
+    </style>
+{% endblock %}
+{% block content %}
     <table>
+    <caption><h1>Прайс лист от {{ flatpage.content.date }}</h1></caption>
         <thead>
         <tr>
             <th>№ п\п</th>
-            <th colspan="2">Вид кирпича</th>
-            <th>Основные характеристики</th>
-            <th>Марки по прочности</th>
-            <th>Цена <span class='nds'>за физ. шт., без НДС, руб</span></th>
+            <th>Кирпич</th>
+{#            <th>Основные характеристики</th>#}
+            <th class='marks'>Марки по прочности</th>
+            <th class='price'>Цена <span class='nds'>за физ. шт., без НДС, руб</span></th>
         </tr>
         </thead>
     <tbody>
-        {% for b in flatpage.content.brick %}
+        {% for b in flatpage.content.brick_set.all %}
             <tr>
-                <td>{{ b.order }}</td>
-            {% ifchanged b.color %}<td rowspan="{{ b.col }}">{{ b.color }}</td>
-                <td rowspan="{{ b.col }}"><p>Кирпич керамический <span class='view'>{{ b.get_view_display|lower }}</span>
-                    пустотелый <span class='width'>{{ b.width|lower }}</span></p>
-                    <div>{{ b.width.size }}</div>
-                    <b>{{ b.GOST }}</b>
+                <th class='order'>{{ b.order }}</th>
+{#            <td>{{ b.color }}</td>#}
+                <td rowspan="{{ b.col }}"><a href="{{ b.get_absolute_url }}"><h1>Кирпич керамический <span class='view'>{{ b.get_view_display|lower }}</span>
+                    пустотелый <span class='width'>{{ b.width|lower }}</span></h1></a>
+                    <h2 class={{ b.color.name|translify }}>{{ b.color }}</h2>
+                    <h3>{{ b.width.size }} {{ b.GOST }}</h3>
+
                 </td>
-                <td rowspan="{{ b.col }}" class="chars">
-                    <ul>{% for c in b.chars %}
-                            <li>{{ c.label }}<span>{{ c.value }} {{ c.un }}</span></li>
-                        {% endfor %}
-                    </ul>
-                </td>
-            {% endifchanged %}
+{#                <td rowspan="{{ b.col }}" class="chars">#}
+{#                    <table>{% for c in b.chars %}#}
+{#                            <tr><th>{{ c.label }}</th><td>{{ c.value }} {{ c.un }}</td></tr>#}
+{#                        {% endfor %}#}
+{#                    </table>#}
+{#                </td>#}
                 <td colspan="2">
-                    <ul class='price'>{% for m in b.mark_price.all %}
-                        <li>{{ m.mark }}<span>{{ m.price }}</span></li>
+                    <table>
+                    {% for m in b.mark_price.all %}
+                        <tr><th class='marks'>{{ m.mark }}</th><td class='price'>{{ m.price }}</td></tr>
                     {% endfor %}
-                </ul>
+
+                    </table>
                 </td>
             </tr>
         {% endfor %}
     </tbody>
+
     </table>
 {% endblock %}
