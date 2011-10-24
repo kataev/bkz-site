@@ -13,6 +13,7 @@ body {
     color: #333;
     
 }
+img {border:none;}
 
 #ish a {
     position: absolute;
@@ -134,7 +135,7 @@ letter-spacing: 1px;}
     margin: 0 0 1.25em;
     text-align: center;
 }
-#content a {background-image: url('/static/images/diagonal-noise.png');color: #990d0d;}
+#content .articletext  a {background-image: url('/static/images/diagonal-noise.png');color: #990d0d;}
 #content img { margin: 2px; border: 1px #990d0d solid; padding: 2px;
 background-image: url('/static/images/diagonal-noise.png');
 }
