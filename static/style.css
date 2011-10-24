@@ -43,6 +43,8 @@ img {border:none;}
     float: left;
     padding: 0 13px 0 13px;
     margin-left: 5px;
+    border: 1px solid #990d0d;
+    border-top:none;
 }
 #navbar li a {
     display: block;
@@ -135,8 +137,8 @@ letter-spacing: 1px;}
     margin: 0 0 1.25em;
     text-align: center;
 }
-#content .articletext  a {background-image: url('/static/images/diagonal-noise.png');color: #990d0d;}
-#content .articletext img { margin: 2px; border: 1px #990d0d solid; padding: 2px;
+#content #articletext  a {background-image: url('/static/images/diagonal-noise.png');color: #990d0d;}
+#content #articletext img { margin: 2px; border: 1px #990d0d solid; padding: 2px;
 background-image: url('/static/images/diagonal-noise.png');
 }
 
