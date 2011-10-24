@@ -11,7 +11,7 @@ body {
     font:  0.8125em Verdana, sans serif;
     /*line-height: 1px;*/
     color: #333;
-    background: url('/static/images/background.png') right bottom fixed no-repeat;
+    
 }
 
 #ish a {
@@ -30,24 +30,31 @@ body {
 
 #navbar {
     height:2.4em;
-    padding: 0 0 0 215px;
+    padding: 0 0 0 190px;
     background: #fbfaf4;
     border-top: 5px solid #990d0d;
     font:  18px Verdana, serif;
     overflow: hidden;
     min-width:750px;
+    background-image: url('/static/images/diagonal-noise.png');
 }
 #navbar li {
     float: left;
-    padding: 0 23px 0 13px;
+    padding: 0 13px 0 13px;
     margin-left: 5px;
-    
 }
 #navbar li a {
     display: block;
     padding:  0.75em 0 0.25em;
     text-transform: uppercase;
     color: #990d0d;
+}
+
+.about #about, .price #price, .root #root,
+.contacts #contacts, .products #products {
+    border: 1px solid #990d0d;
+    border-top: none;
+    background-color: white;
 }
 
 #ish {
@@ -66,6 +73,8 @@ body {
 
 #main a {
     color: #808284;
+    
+    /*background-color: #6b1200;*/
 }
 
 #main h2, #main h1{
@@ -82,8 +91,10 @@ body {
     /*background-color: white;*/
 }
 
-#main a:hover
-{color:black !important; background-color: #f8dcdc; text-decoration: underline !important;}
+#main a:hover {
+    color:black !important;
+    background-color: #d2d2d2;
+    text-decoration: underline !important;}
 
 .title {text-transform: none;
 letter-spacing: 1px;}
@@ -123,8 +134,10 @@ letter-spacing: 1px;}
     margin: 0 0 1.25em;
     text-align: center;
 }
-
-#content img { margin: 2px; border: 1px #990d0d solid; padding: 2px;}
+#content a {background-image: url('/static/images/diagonal-noise.png');color: #990d0d;}
+#content img { margin: 2px; border: 1px #990d0d solid; padding: 2px;
+background-image: url('/static/images/diagonal-noise.png');
+}
 
 .title {
     text-transform: none;
@@ -134,22 +147,24 @@ letter-spacing: 1px;}
 
 #secondary {width: 215px;}
 #secondary .title {margin-bottom: 0.25em;}
-#secondary a {color:#990d0d;text-decoration: none;background-color: #F0F2F4;}
+#secondary a {
+    color:#990d0d;
+    text-decoration: none;
+}
 #sidebar { width: 140px; padding-left: 15px;}
 #banners {margin: 0 20px 20px;}
-#banners li {margin: 0 0 10px; border: 1px dashed;}
+#banners li {margin: 0 0 10px; border: 1px solid;}
 #banners li a {
     color: black;
     padding: 5px;
     text-align: center;
     text-decoration: none;
-    /*background:  #CCC;*/
+    background-image: url('/static/images/diagonal-noise.png');
     display: block;
-    /*width: 173px;*/
-    /*height: 128px;*/
-    margin: 0 auto;
+    margin: 2px;
+    border: 1px black solid;
 }
-#banners li a:hover {background: none;}
+#banners li a:hover {background: none; border-color: white;text-decoration: none;}
 #banners li a p {margin: auto;text-align: center;}
 
 #banners li a span {border-top: 1px gray solid;}
