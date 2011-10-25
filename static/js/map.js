@@ -35,5 +35,14 @@ dojo.addOnLoad(function() {
         title:"Березниковский кирпичный завод"
     });
     marker.setMap(map);
+    var prof = new google.maps.Marker({
+        position: new google.maps.LatLng(59.32153, 56.9),
+        title:"Санаторий-профилакторий ООО 'Уралкалий'", id:'test'
+    });
+    prof.setMap(map);
+
+    dojo.connect(dojo.byId('bkz'),'onclick',function(){
+        map.setCenter(zavod);
+    })
 
 });

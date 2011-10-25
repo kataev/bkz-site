@@ -8,7 +8,7 @@ html {display: block;}
 ul,ol {list-style: none;}
 .column {float:left;}
 body {
-    font:  0.8125em Verdana, sans serif;
+    font:  1.0125em Verdana, sans serif;
     /*line-height: 1px;*/
     color: #333;
     
@@ -43,7 +43,7 @@ img {border:none;}
     float: left;
     padding: 0 13px 0 13px;
     margin-left: 5px;
-    border: 1px solid #990d0d;
+    /*border: 1px solid #990d0d;*/
     border-top:none;
 }
 #navbar li a {
