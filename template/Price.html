@@ -1,75 +1,150 @@
 {% extends 'index.html' %}
 {% load pytils_translit %}
 {% block media %}
-    <style type="text/css">
-
-
-table {border-collapse: collapse;}
-div>table {text-align: center;border: black 2px solid;}
-div>table>tbody>tr {border: black 2px solid;}
-table td,table th {margin: 4px; border: 1px black solid;}
-table ul {margin: 0px; list-style: none; padding-left: 0px;}
-table .chars {font-size: 75%;text-align: left;}
-table .chars li { border-bottom: 1px dotted #008b8b;}
-table .chars span {float:right;}
-ul.price {list-style: none; text-align: left;}
-table .price li:before {content: 'М '}
-table .price li {border-bottom: 1px dotted black; margin: 0px 50px 5px 25px;}
-table .price li span {float:right;right: 20px;}
-
-td h1 a {text-decoration: none;}
-table, table p {letter-spacing: normal !important;}
-    table table {width: 100%;height: 120px; border: none;}
-    /*table table td {border: none; border-bottom: 1px black solid;}*/
-    /*table table th {border: none; border-right: 1px black solid;border-bottom: 1px black solid;}*/
-    /*table table th:last-child {border: none; border-right: 1px black solid;}*/
-    td.chars td {width:60px;}
-    .marks {width: 70px;}
-    .price {width: 80px;}
-    tbody th.order {font-size: 2em;}
-    td p {position: relative;float: right;}
-    </style>
+    <link rel="stylesheet" type="text/css" href="/static/css/price.css" media="all"/>
 {% endblock %}
 {% block content %}
-    <table>
-    <caption><h1>Прайс лист от {{ flatpage.content.date }}</h1></caption>
+    <table style="page-break-after: always;">
+        <caption><h1>Прайс лист от <b>{{ flatpage.content.date }}</b></h1></caption>
+        <colgroup>
+            <col span="1" class='order'>
+            <col span="2" class='name'>
+            <col span="3" class='other'>
+        </colgroup>
         <thead>
         <tr>
             <th>№ п\п</th>
             <th>Кирпич</th>
-{#            <th>Основные характеристики</th>#}
-            <th class='marks'>Марки по прочности</th>
-            <th class='price'>Цена <span class='nds'>за физ. шт., без НДС, руб</span></th>
+            {#            <th>Основные характеристики</th>#}
+            <th class='mark'>Марки по прочности</th>
+            <th class='decimal'>Цена <span class='nds'>за физ. шт., без НДС, руб</span></th>
         </tr>
         </thead>
-    <tbody>
+        <tbody>
         {% for b in flatpage.content.brick_set.all %}
             <tr>
-                <th class='order'>{{ b.order }}</th>
-{#            <td>{{ b.color }}</td>#}
-                <td rowspan="{{ b.col }}"><a href="{{ b.get_absolute_url }}"><h1>Кирпич керамический <span class='view'>{{ b.get_view_display|lower }}</span>
+                <th>{{ b.order }}</th>
+                {#            <td>{{ b.color }}</td>#}
+                <td rowspan="{{ b.col }}"><a href="{{ b.get_absolute_url }}"><h1>Кирпич керамический
+                    <i>{{ b.get_view_display|lower }}</i>
                     пустотелый <span class='width'>{{ b.width|lower }}</span></h1></a>
+
                     <h2 class={{ b.color.name|translify }}>{{ b.color }}</h2>
-                    <h3>{{ b.width.size }} {{ b.GOST }}</h3>
+                    <h3>{{ b.width.size }}, масса {{ b.width.weight }}кг</h3>
 
                 </td>
-{#                <td rowspan="{{ b.col }}" class="chars">#}
-{#                    <table>{% for c in b.chars %}#}
-{#                            <tr><th>{{ c.label }}</th><td>{{ c.value }} {{ c.un }}</td></tr>#}
-{#                        {% endfor %}#}
-{#                    </table>#}
-{#                </td>#}
+                {#                <td rowspan="{{ b.col }}" class="chars">#}
+                {#                    <table>{% for c in b.chars %}#}
+                {#                            <tr><th>{{ c.label }}</th><td>{{ c.value }} {{ c.un }}</td></tr>#}
+                {#                        {% endfor %}#}
+                {#                    </table>#}
+                {#                </td>#}
                 <td colspan="2">
-                    <table>
-                    {% for m in b.mark_price.all %}
-                        <tr><th class='marks'>{{ m.mark }}</th><td class='price'>{{ m.price }}</td></tr>
-                    {% endfor %}
+                    <table class='inside'>
+                        <colgroup>
+                            <col span='1' class='mark'>
+                            <col span='2' class='decimal'>
+                        </colgroup>
+                        <tfoot>
+                        {% for m in b.mark_price.all %}
+                            <tr>
+                                <th>{{ m.mark }}</th>
+                                <td>{{ m.price }}</td>
+                            </tr>
+                        {% endfor %}
 
                     </table>
                 </td>
             </tr>
+            {% if b.order == 8 %}</tbody></table>
+                <table>
+                <colgroup>
+                    <col span="1" class='order'>
+                    <col span="2" class='name'>
+                    <col span="3" class='other'>
+                </colgroup>
+                <tfoot id='second'>
+                <tr>
+                    <th>№ п\п</th>
+                    <th>Кирпич</th>
+                    {#            <th>Основные характеристики</th>#}
+                    <th class='mark'>Марки по прочности</th>
+                    <th class='decimal'>Цена <span class='nds'>за физ. шт., без НДС, руб</span></th>
+                </tr>
+                </tfoot>
+                <tbody>{% endif %}
         {% endfor %}
-    </tbody>
+        </tbody>
+        </table>
+{% endblock %}
 
-    </table>
+{% block secondary %}
+    <div id='choice'>
+        <h4 class='title'>Печать</h4>
+        <p>Для того что бы разпечатать прайс лист на бумаге
+            можно разпечатать эту страницу или скачать файл.</p>
+        {% if price.file %}
+            <h4 class='title'>Скачать</h4>
+            <p>Прайс лист в формате <i style='border-bottom: 1px dashed #b2b2b2;' title='.doc'>Word</i>,
+                можно скачать по
+                <a href="{{ price.file.url }}" title='Скачать прайс'>ссылке</a></p>
+        {% endif %}
+    </div>
+    <h4 class='title'>Важная информация</h4>
+    <h5>Условия поставки</h5>
+    <p>Отгрузка кирпича производится на поддонах.</p>
+    <h5>Кол-во кирпича на <i>одном</i> поддоне:</h5>
+    <dl id='poddon'>
+        <dd><i>Строительный</i> одинарный</dd>
+        <dt>352</dt>
+        <dd><i>Строительный</i> утолщенный</dd>
+        <dt>288</dt>
+        <dd><i>Лицевой</i> одинарный</dd>
+        <dt>264</dt>
+        <dd><i>Лицевой</i> утолщенный</dd>
+        <dt>192</dt>
+    </dl>
+    <h5>Залоговая стоимость поддона</h5>
+    <p>200 руб/поддон.</p>
+
+    <h5>Срок возврата тары</h5>
+    <p>60 дней</p>
+
+    <h5>Размеры поддонов</h5>
+    <dl>
+        <dd><i>Строительный</i></dd>
+        <dt>1000&#xD7;1000&#xD7;1054</dt>
+        <dd>Масса поддона</dd>
+        <dt>1000 кг</dt>
+    </dl>
+    <dl>
+        <dd><i>Лицевой</i></dd>
+        <dt>1000&#xD7;700&#xD7;1054</dt>
+        <dd>Масса поддона</dd>
+        <dt>730 кг</dt>
+    </dl>
+
+    <h4 class='title'>Характеристики</h4>
+        <h5>Морозостойкость</h5>
+    <dl>
+        <dd>Красный</dd>
+        <dt>До F 50</dt>
+        <dd>Желтый</dd>
+        <dt>До F 35</dt>
+
+    <dd class='no_after'><h5>Водопоглощение</h5></dd><dt>8-12%</dt>
+    <dd class='no_after'><h5>Пустотность</h5></dd><dt>30%</dt>
+    <dd class='no_after'><h5>Теплопроводность</h5></dd><dt>0.39 Вт/м.с</dt>
+    <h4>Естественная активность <br> радионуклидов</h4>
+    <dd>Красный</dd><dt>127,7</dt>
+    <dd>Желтый</dd><dt>144,5</dt>
+    </dl>
+
+
+
+    <div id='details'>
+        <h4 class='title'>Реквизиты</h4>
+        <address>618426, Россия, Пермский край, г.Березники, ул.Сильвинитная 1А, ООО"Березниковский кирпичный завод"</address>
+        <p>Инн 591103970, БИК 045795858, р/с 407 028 103 00 57 00 00 903 в Березниковском филиале ОАО "Банк Москвы"</p>
+        </div>
 {% endblock %}

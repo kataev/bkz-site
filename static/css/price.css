@@ -1,0 +1,20 @@
+table {width: 100%;
+    border-collapse: collapse; text-align: center;
+    line-height: normal; vertical-align: middle; }
+table td {height: 100%;vertical-align: middle;}
+caption {font-size: 1.2em !important;}
+tbody h1 {font-size: 1.06em !important;}
+tbody h2 {font-size: 1em !important;}
+tbody h3 {font-size: 0.8em !important;}
+tr {page-break-inside: avoid !important;}
+td,th { border: 1px black solid;}
+table.inside {width: 100%;}
+table.inside td{border: none; height: 100%;}
+table.inside th{border: none;}
+.order {width: 50px;}
+.name {width: 290px;}
+.mark {width: 85px}
+.decimal {width: 70px}
+td>table tr {height: auto;}
+#details {display: none;font-size: small;}
+

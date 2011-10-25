@@ -3,7 +3,8 @@
 <head>
     <title>{% block title %}{{ flatpage.title }}{% endblock %} - Березниковский кирпичный завод</title>
     <link href="/static/images/icon.png" rel="shortcut icon">
-    <link href="/static/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/css/print.css" media="print" />
+    <link href="/static/css/style.css" rel="stylesheet" media="all">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js"></script>
     <script type="text/javascript" src="/static/js/script.js"></script>
     {% block media %}{% endblock %}
@@ -42,6 +43,7 @@
             {% endblock %}</div>
         </div>
         <div id='secondary' class='column'>
+        {% block secondary %}
             <ul id='banners'>
                 <li class='priceList'>
                     <a href="{{ price.get_absolute_url }}">
@@ -58,17 +60,18 @@
                     {{ n.content|safe|truncatewords_html:8 }}
                 {% endfor %}
             </div>
+        {% endblock %}
         </div>
         {#    <div id='sidebar' class='column'></div>#}
     {% endblock main %}
 </div>
 <div id='footer'>
-
-    <p>
-    <span class='copyright'>&copy
-        ООО &#8220Березниковский кирпичный завод&#8221, <span class='years'>2011 &#8212 {% now "Y" %}</span>
-    </span>
-    </p>
+    <p id='copyright'><span>&copy ООО &#8220Березниковский кирпичный завод&#8221,
+        <span class='years'>2011 &#8212 {% now "Y" %}</span>
+    </span></p>
+{#    <address><p>#}
+{#        618426, Россия, Пермский край, г.Березники, ул.Сильвинитная, 1А</p>#}
+{#    </address>#}
 </div>
 </body>
 </html>

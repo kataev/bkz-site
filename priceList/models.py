@@ -2,7 +2,7 @@
 from django.db import models
 import datetime
 from tinymce import models as tm
-from settings import STATICFILES_DIRS
+from settings import STATICFILES_DIRS,MEDIA_ROOT
 import pytils
 
 chars = u"""Морозостойкость - до F 50
@@ -28,7 +28,7 @@ class Color(models.Model):
         verbose_name = u'Цвет кирпича'
         verbose_name_plural = u'Цвет кирпичей'
 
-view_c = ((u'facial',u'Лицевой'),(u'common',u'Рядовой')) #Строительный (Рядовой)
+view_c = ((u'facial',u'Лицевой'),(u'common',u'Строительный (Рядовой)')) #Строительный (Рядовой)
 
 class Width(models.Model):
     name = models.CharField(u'Название',max_length=60)
@@ -55,7 +55,7 @@ class MarkPrice(models.Model):
 
 class PriceList(models.Model):
     date = models.DateField(u'Дата прайса',default=datetime.date.today())
-    file = models.FileField(u'Файл с прайсом',upload_to=STATICFILES_DIRS[0],blank=True)
+    file = models.FileField(u'Файл с прайсом',upload_to='price',blank=True)
 
     class Meta:
         verbose_name = u'Прайс-лист'
