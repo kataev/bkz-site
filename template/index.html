@@ -12,7 +12,6 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js"></script>
     <script type="text/javascript" src="/static/js/script.js"></script>
     {% block media %}{% endblock %}
-</head>
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-26559528-1']);
@@ -24,7 +23,10 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script>
+</head>
+{% block body %}
 <body class='claro {% if flatpage.url == '/' %}root{% else %}{{ flatpage.url|cut:'/' }}{% endif %}'>
+
 {% load pytils_dt %}
 <ul id='navbar'>
     {% include 'menu.html' %}
@@ -63,7 +65,7 @@
                 <li class='priceList'>
                     <a href="{{ price.get_absolute_url }}">
                         <h4>Прайс лист</h4>
-                        <p>от {{ price.date }}</p>
+                        <abbr title='{{ price.date.isoformat }}'>от {{ price.date }}</abbr>
                     </a>
                 </li>
             </ul>
@@ -71,7 +73,7 @@
                 {#        <h3>Последние новости</h3>#}
                 {% for n in news %}
                     <h4 class='title'><a href="{{ n.get_absolute_url }}">{{ n.title }}</a></h4>
-                    <p class="info">{{ n.date|ru_strftime_inflected:'%d %B %Y' }}</p>
+                    <abbr title='{{ n.date.isoformat }}' class="info">{{ n.date|ru_strftime_inflected:'%d %B %Y' }}</abbr>
                     {{ n.content|safe|truncatewords_html:8 }}
                 {% endfor %}
             </div>
@@ -89,4 +91,5 @@
 {#    </address>#}
 </div>
 </body>
+{% endblock %}
 </html>
