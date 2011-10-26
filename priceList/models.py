@@ -55,7 +55,8 @@ class MarkPrice(models.Model):
 
 class PriceList(models.Model):
     date = models.DateField(u'Дата прайса',default=datetime.date.today())
-    file = models.FileField(u'Файл с прайсом',upload_to='price',blank=True)
+    file = models.FileField(u'Файл с прайсом в Word формате',upload_to='price',blank=True)
+    pdf = models.FileField(u'Файл с прайсом PDF',upload_to='price',blank=True)
 
     class Meta:
         verbose_name = u'Прайс-лист'

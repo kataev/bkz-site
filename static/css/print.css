@@ -41,10 +41,23 @@ html body pre, html body code {vertical-align: baseline;}
    content: " (http://властелинглины.рф" attr(href) ") ";}
 
 tbody {page-break-inside: avoid;}
-table caption h1:after {content: ' ООО Березниковский кирпичный завод'}
 #second  {display: table-header-group;}
+
+table caption h1:after {
+    content: 'ООО Березниковский кирпичный завод';
+    display: block;
+}
 
 .price #secondary {display: block !important;}
 .price #secondary #choice {display: none;}
 .price #poddon {float:left;width: 50%;}
-#details {display: block !important;}
+.price #secondary div {float: left !important; width: 50%;}
+.price #footer {display: none !important;}
+.price table a {text-decoration: none !important;}
+#details {
+    display: block !important;
+    clear: both;
+    width: 100% !important;
+    font-family: Courier;
+    font-size: small;
+}

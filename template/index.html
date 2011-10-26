@@ -3,12 +3,27 @@
 <head>
     <title>{% block title %}{{ flatpage.title }}{% endblock %} - Березниковский кирпичный завод</title>
     <link href="/static/images/icon.png" rel="shortcut icon">
+
+    <meta name='description' content='Сайт для ООО "Березниковский кирпичный завод"'>
+    <meta name='author' content='Катаев Денис'>
+
     <link rel="stylesheet" type="text/css" href="/static/css/print.css" media="print" />
     <link href="/static/css/style.css" rel="stylesheet" media="all">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js"></script>
     <script type="text/javascript" src="/static/js/script.js"></script>
     {% block media %}{% endblock %}
 </head>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-26559528-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 <body class='claro {% if flatpage.url == '/' %}root{% else %}{{ flatpage.url|cut:'/' }}{% endif %}'>
 {% load pytils_dt %}
 <ul id='navbar'>

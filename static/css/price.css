@@ -17,4 +17,5 @@ table.inside th{border: none;}
 .decimal {width: 70px}
 td>table tr {height: auto;}
 #details {display: none;font-size: small;}
+#main table a {text-decoration: none;}
 
