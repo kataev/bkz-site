@@ -7,7 +7,8 @@ tbody h1 {font-size: 1.06em !important;}
 tbody h2 {font-size: 1em !important;}
 tbody h3 {font-size: 0.8em !important;}
 tr {page-break-inside: avoid !important;}
-td,th { border: 1px black solid;}
+td,th { border: 1px black solid; }
+
 table.inside {width: 100%;}
 table.inside td{border: none; height: 100%;}
 table.inside th{border: none;}
@@ -19,3 +20,4 @@ td>table tr {height: auto;}
 #details {display: none;font-size: small;}
 #main table a {text-decoration: none;}
 
+.price div>table>tbody>tr>td {height: 88px !important;}

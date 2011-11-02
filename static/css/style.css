@@ -132,8 +132,8 @@ img {border:none;}
 #content h1 {
     font: 1.66em Georgia, Times, serif;
     text-align: center;
-    margin: 0.5em 0;
-    padding-bottom: 0.75em;
+    margin: 0em 0;
+    padding-bottom: 0;
     /*border-bottom: 1px dashed #b2b2b2;*/
 }
 
@@ -153,9 +153,7 @@ img {border:none;}
     padding: 2px;
     background-image: url('/static/images/diagonal-noise.png');
 }
-.contacts #content address {
-    font-size: small;
-}
+/*.contacts #content address { font-size: small; }*/
 
 .contacts #content ul {
     margin: 0 0 0.7em;
@@ -179,7 +177,7 @@ img {border:none;}
 #secondary h5 {font-size: 0.9em;}
 #secondary dl {white-space: nowrap; margin-bottom:0.7em;}
 #secondary dl dd {float:left;margin-right: 5px;}
-#secondary dl dd:after {content: ':'}
+#secondary dl dd:after {content: ' \2014'; color:black;}
 .no_after:after {content: none !important;}
 #secondary dl dt {font-style: italic;font-weight: bold;}
 #secondary dl.poddon dt:after {content: ' шт.'}

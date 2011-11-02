@@ -52,7 +52,7 @@ table caption h1:after {
 .price #secondary #choice {display: none;}
 .price #poddon {float:left;width: 50%;}
 .price #secondary div {float: left !important; width: 50%;}
-.price #footer {display: none !important;}
+#footer {display: none !important;}
 .price table a {text-decoration: none !important;}
 #details {
     display: block !important;

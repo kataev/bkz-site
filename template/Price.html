@@ -3,7 +3,15 @@
 {% block media %}
     <link rel="stylesheet" type="text/css" href="/static/css/price.css" media="all"/>
 {% endblock %}
-{% block content %}
+{% block title %}Цены{% endblock %}
+{% block main %}
+        <div id='content' class='column' itemscope itemtype="http://schema.org/Product">
+        <meta itemprop='name' content='Кирпич'>
+        <meta itemprop='model' content='ГОСТ 530-2007'>
+
+        <meta itemprop='brand' content='Березниковский кирпичный завод'>
+        <meta itemprop='productid' content='ОКПД:26.40.11.110'>
+{#        <meta itemprop='image' content="http://dl.dropbox.com/u/8716795/1131603681.jpg">#}
     <table style="page-break-after: always;">
         <caption><h1>Прайс лист от <b>{{ flatpage.content.date }}</b></h1></caption>
         <colgroup>
@@ -15,22 +23,16 @@
         <tr>
             <th>№ п\п</th>
             <th>Кирпич</th>
-            {#            <th>Основные характеристики</th>#}
             <th class='mark'>Марки по прочности</th>
             <th class='decimal'>Цена <span class='nds'>за физ. шт., без НДС, руб</span></th>
         </tr>
         </thead>
         <tbody>
         {% for b in flatpage.content.brick_set.all %}
-            <tr itemscope itemtype="http://schema.org/Offer" id='{{ b.order }}'>
+            <tr itemprop='offers' itemscope itemtype="http://schema.org/Offer" id='{{ b.order }}'>
+            <meta itemprop='availability' content='In stock'>
                 <th>{{ b.order }}</th>
-                <meta itemprop='url' content='/price/#{{ b.order }}'>
-                <meta itemprop='itemCondition' content="Новый">
-                <meta itemprop='productid' content="{{ b.okpd }}">
-                <meta itemprop='model' content="{{ b.width }}">
-{#                <meta itemprop='availability' content="Предзаказ">#}
-                <meta itemprop='availability' content="Новый">
-                <td rowspan="{{ b.col }}"><a href="{{ b.get_absolute_url }}"><h1 itemprop='itemOffered'>Кирпич керамический
+                <td rowspan="{{ b.col }}"><a href="{{ b.get_absolute_url }}"><h1>Кирпич керамический
                     <i>{{ b.get_view_display|lower }}</i>
                     пустотелый <span class='width'>{{ b.width|lower }}</span></h1></a>
 
@@ -39,12 +41,6 @@
                     <h3>{{ b.width.size }}, масса <span>{{ b.width.weight }}</span>кг</h3>
 
                 </td>
-                {#                <td rowspan="{{ b.col }}" class="chars">#}
-                {#                    <table>{% for c in b.chars %}#}
-                {#                            <tr><th>{{ c.label }}</th><td>{{ c.value }} {{ c.un }}</td></tr>#}
-                {#                        {% endfor %}#}
-                {#                    </table>#}
-                {#                </td>#}
                 <td colspan="2">
                     <table class='inside' >
                         <colgroup>
@@ -54,8 +50,8 @@
                         <tfoot>
                         {% for m in b.mark_price.all %}
                             <tr>
-                                <th>{{ m.mark }}</th>
-                                <td itemprop='price'>{{ m.price }}</td>
+                                <th title='Марка'>{{ m.mark }}</th>
+                                <td title='Цена' itemprop='price'>{{ m.price }}</td>
                             </tr>
                         {% endfor %}
 
@@ -82,9 +78,11 @@
         {% endfor %}
         </tbody>
         </table>
-{% endblock %}
 
-{% block secondary %}
+{#{% endblock %}#}
+    </div>
+{#{% block secondary %}#}
+        <div id='secondary' class='column'>
     <div id='choice'>
         <h4 class='title'>Печать</h4>
         <p>Для того что бы разпечатать прайс лист на бумаге
@@ -100,6 +98,9 @@
     </div>
     <div>
         <h4 class='title'>Важная информация</h4>
+        <h5>Стандарт</h5>
+        <p>Кирпич соответсвует <a href='/static/gost_530_07.pdf' target='_blank'>ГОСТ 530-2007</a>.</p>
+
         <h5>Условия поставки</h5>
 
         <p>Отгрузка кирпича производится на поддонах.</p>
@@ -127,21 +128,21 @@
         <h4 class='title'>Характеристики кирпича</h4>
         <h5>Морозостойкость</h5>
         <dl>
-            <dd>Красный</dd>
+            <dd class='Krasnyij'>Красный</dd>
             <dt>До F 50</dt>
-            <dd>Желтый</dd>
+            <dd class='Zheltyij'>Желтый</dd>
             <dt>До F 35</dt>
 
-            <dd class='no_after'><h5>Водопоглощение</h5></dd>
+            <dd class='no_after'><h5>Водопоглощение &#8212;</h5></dd>
             <dt>8-12%</dt>
-            <dd class='no_after'><h5>Пустотность</h5></dd>
+            <dd class='no_after'><h5>Пустотность &#8212;</h5></dd>
             <dt>30%</dt>
-            <dd class='no_after'><h5>Теплопроводность</h5></dd>
+            <dd class='no_after'><h5>Теплопроводность &#8212;</h5></dd>
             <dt>0.39 Вт/м.с</dt>
-            <h4>Естественная активность <br> радионуклидов</h4>
-            <dd>Красный</dd>
+            <h4>Естественная активность <br> радионуклидов:</h4>
+            <dd class='Krasnyij'>Красный</dd>
             <dt>127,7</dt>
-            <dd>Желтый</dd>
+            <dd class='Zheltyij'>Желтый</dd>
             <dt>144,5</dt>
         </dl>
     <h5>Размеры поддонов</h5>
@@ -160,12 +161,12 @@
 
 
     <div id='details'>
-        <h4 class='title'>Реквизиты</h4>
+{#        <h4 class='title'>Реквизиты</h4>#}
         <address>618426, Россия, Пермский край, г.Березники, ул.Сильвинитная 1А,
             ООО"Березниковский кирпичный завод"</address>
         <p>Инн 591103970, БИК 045795858,
             р/с 407 028 103 00 57 00 00 903 в
             Березниковском филиале ОАО "Банк Москвы"</p>
     </div>
-
+    </div>
 {% endblock %}

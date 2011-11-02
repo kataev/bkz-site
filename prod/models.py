@@ -4,10 +4,10 @@ from bkz.priceList.models import *
 from tinymce import models as tinymodels
 
 class Product(models.Model):
-    brick = models.ForeignKey(Brick,verbose_name=u'Кирпич')
+    brick = models.OneToOneField(Brick,verbose_name=u'Кирпич')
     color = models.ManyToManyField(Color,verbose_name=u'Какие цвета в продаже')
     about = tinymodels.HTMLField(u'Текст новости')
-#    image = models.ImageField(u'Изображение')
+    image = models.ImageField(u'Изображение',upload_to='product',null=True,blank=True)
     def __unicode__(self):
         return unicode(self.brick)
 
