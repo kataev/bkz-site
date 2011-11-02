@@ -84,7 +84,7 @@ img {border:none;}
 .Zheltyij { color:#bfa730 !important;}
 .Krasnyij { color:#6b1200 !important;}
 
-#main p {
+#main p, #main address {
     text-align: left;
     line-height: 1.5125em;
     margin: 0 0 0.7em;
@@ -116,12 +116,17 @@ img {border:none;}
     margin-bottom: 1.5em;
 }
 
-#content .title {
+#content h2.title {
     margin-bottom: 0;
     padding-bottom: 0.25em;
     border-bottom: none;
     text-align: center;
-    font: 1.8em Georgia, Times, serif;
+    font: 1.6em Georgia, Times, serif;
+}
+#content h3.title {
+    font: 1.4em Georgia, Times, serif;
+    text-align: center;
+
 }
 
 #content h1 {
@@ -129,7 +134,7 @@ img {border:none;}
     text-align: center;
     margin: 0.5em 0;
     padding-bottom: 0.75em;
-    border-bottom: 1px dashed #b2b2b2;
+    /*border-bottom: 1px dashed #b2b2b2;*/
 }
 
 #content .byline {
@@ -147,6 +152,13 @@ img {border:none;}
     border: 1px #990d0d solid;
     padding: 2px;
     background-image: url('/static/images/diagonal-noise.png');
+}
+.contacts #content address {
+    font-size: small;
+}
+
+.contacts #content ul {
+    margin: 0 0 0.7em;
 }
 
 .title {

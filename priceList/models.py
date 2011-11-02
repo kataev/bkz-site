@@ -28,7 +28,7 @@ class Color(models.Model):
         verbose_name = u'Цвет кирпича'
         verbose_name_plural = u'Цвет кирпичей'
 
-view_c = ((u'facial',u'Лицевой'),(u'common',u'Строительный (Рядовой)')) #Строительный (Рядовой)
+
 
 class Width(models.Model):
     name = models.CharField(u'Название',max_length=60)
@@ -69,7 +69,7 @@ class PriceList(models.Model):
     def __unicode__(self):
         return u'Прайс лист от %s года' % pytils.dt.ru_strftime(u'%d %B %Y',inflected=True,date=self.date)
 
-
+view_c = ((u'facial',u'Лицевой'),(u'common',u'Строительный (Рядовой)')) #Строительный (Рядовой)
 class Brick(models.Model):
     col=1
     GOST = u'ГОСТ 530-2007'
@@ -80,6 +80,16 @@ class Brick(models.Model):
     tara = models.IntegerField(u'Кол-во кирпича на 1 поддоне')
     mark_price = models.ManyToManyField(MarkPrice,verbose_name=u'Марка и цена',blank=True)
     price = models.ForeignKey(PriceList,verbose_name=u'Прайс')
+
+    def okpd(self):
+        if self.view == u'facial':
+            o =  u'ОКПД:26.40.11.112'
+        if self.view == u'common':
+            o = u'ОКПД:26.40.11.111'
+        if self.width.name == u'Двойной':
+            o = u'ОКПД:26.40.11.120'
+        return o
+
 
     def chars(self):
         color = self.color

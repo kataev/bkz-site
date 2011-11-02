@@ -5,7 +5,7 @@
  */
 dojo.addOnLoad(function() {
     var element = document.getElementById("map");
-    var zavod = new google.maps.LatLng(59.34506, 56.91378)
+    var zavod = new google.maps.LatLng(59.34506, 56.91378) //lat,lon
     var mapTypeIds = [];
     for (var type in google.maps.MapTypeId) {
         mapTypeIds.push(google.maps.MapTypeId[type]);

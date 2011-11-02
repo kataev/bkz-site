@@ -3,9 +3,10 @@ import os
 
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 
+INTERNAL_IPS = ('127.0.0.1',)
 FORCE_SCRIPT_NAME = ''
-#DEBUG = True
-DEBUG = False
+DEBUG = True
+#DEBUG = False
 TEMPLATE_DEBUG = True
 
 ADMINS = (
@@ -120,7 +121,7 @@ MIDDLEWARE_CLASSES = (
 #    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-#    'debug_toolbar.middleware.DebugToolbarMiddleware'
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 
 )
@@ -148,6 +149,7 @@ INSTALLED_APPS = (
     'prod',
     'pytils',
     'tinymce',
+    'debug_toolbar'
 #    'dojango'
 )
 

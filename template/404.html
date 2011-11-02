@@ -1,1 +1,13 @@
-404 error
+{% extends 'index.html' %}
+
+{% block media %}
+    <link href="/static/css/errors.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<body class='404'>
+    <h1>404</h1>
+    <h2>К сожалению страница не найдена</h2>
+</body>
+
+{% endblock %}

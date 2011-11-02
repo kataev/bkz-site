@@ -22,16 +22,21 @@
         </thead>
         <tbody>
         {% for b in flatpage.content.brick_set.all %}
-            <tr>
+            <tr itemscope itemtype="http://schema.org/Offer" id='{{ b.order }}'>
                 <th>{{ b.order }}</th>
-                {#            <td>{{ b.color }}</td>#}
-                <td rowspan="{{ b.col }}"><a href="{{ b.get_absolute_url }}"><h1>Кирпич керамический
+                <meta itemprop='url' content='/price/#{{ b.order }}'>
+                <meta itemprop='itemCondition' content="Новый">
+                <meta itemprop='productid' content="{{ b.okpd }}">
+                <meta itemprop='model' content="{{ b.width }}">
+{#                <meta itemprop='availability' content="Предзаказ">#}
+                <meta itemprop='availability' content="Новый">
+                <td rowspan="{{ b.col }}"><a href="{{ b.get_absolute_url }}"><h1 itemprop='itemOffered'>Кирпич керамический
                     <i>{{ b.get_view_display|lower }}</i>
                     пустотелый <span class='width'>{{ b.width|lower }}</span></h1></a>
 
                     <h2 class={{ b.color.name|translify }}>{{ b.color }}</h2>
 
-                    <h3>{{ b.width.size }}, масса {{ b.width.weight }}кг</h3>
+                    <h3>{{ b.width.size }}, масса <span>{{ b.width.weight }}</span>кг</h3>
 
                 </td>
                 {#                <td rowspan="{{ b.col }}" class="chars">#}
@@ -41,16 +46,16 @@
                 {#                    </table>#}
                 {#                </td>#}
                 <td colspan="2">
-                    <table class='inside'>
+                    <table class='inside' >
                         <colgroup>
                             <col span='1' class='mark'>
                             <col span='2' class='decimal'>
-                        </colgroup>
+                        </colgroup><meta itemprop='priceCurrency' content='RUB'>
                         <tfoot>
                         {% for m in b.mark_price.all %}
                             <tr>
                                 <th>{{ m.mark }}</th>
-                                <td>{{ m.price }}</td>
+                                <td itemprop='price'>{{ m.price }}</td>
                             </tr>
                         {% endfor %}
 
