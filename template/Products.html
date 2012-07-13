@@ -10,7 +10,7 @@
         <span class='{{ c.name|translify }}' title="Цветовая гамма">{{ c }}</span>
         {% endfor %}
         </h5>
-    <p><img src="{{ p.image|default:'/static/images/news_placeholder.gif' }}" alt="Картинка"
+    <img src="{{ p.image.url|default:'/static/images/news_placeholder.gif' }}" alt="Картинка"
              style='float:{% cycle 'left' 'right' %};'>
         {{ p.about|safe }}</p>
     </div>
